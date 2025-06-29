@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WisDose – Blog of Wisdom</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --blue: #7ac7f6;
+      --green: #8ef5b0;
+      --purple: #b08ef5;
+      --black: #1e1e1e;
+      --white: #ffffff;
+      --bg: #f9f9fb;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--blue), var(--purple));
+      color: var(--white);
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    nav {
+      margin-top: 2rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .about img {
+      width: 150px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--purple);
+    }
+
+    .btn {
+      background: var(--green);
+      color: var(--black);
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 3rem;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      flex: 1 1 300px;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    footer {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    footer a {
+      color: var(--green);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>WisDose</h1>
+    <p>Wisdom that Works.</p>
+    <nav>
+      <ul>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="blog">
+      <h2>Blog Highlights</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Why Mental Strength Is the New Flex (and How to Build It) </h3>
+          <a href="post1.html" class="btn">Read More</a>
+        </div>
+        <div class="card">
+          <h3>Emotional Wisdom — The Superpower You Didn’t Know You Had</h3>
+          <a href="post2.html" class="btn">Read More</a>
+        </div>
+        <div class="card">
+          <h3>Mental Overload 101 — Why You Feel Burnt Out All the Time</h3>
+          <a href="post3.html" class="btn">Read More</a>
+        </div>
+        <div class="card">
+          <h3>Toxic Positivity vs. Real Positivity — Know the Difference</h3>
+          <a href="post4.html" class="btn">Read More</a>
+        </div>
+        <div class="card">
+          <h3>Boundaries Are Self-Respect — How to Set Them Without Guilt</h3>
+          <a href="post5.html" class="btn">Read More</a>
+        </div>
+        <div class="card">
+          <h3>Your Healing Journey Won’t Be Aesthetic (And That’s Okay)</h3>
+          <a href="post6.html" class="btn">Read More</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <h2>Wisdom in Motion</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Life Lessons</h3>
+          <p>Short and powerful video insights to live with clarity.</p>
+          <a href="videos.html#life-lessons" class="btn">Watch Now</a>
+        </div>
+        <div class="card">
+          <h3>Mindset Magic</h3>
+          <p>Comming Soon.</p>
+          <a href="magic.html" class="btn">Explore</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Get in Touch</h2>
+      <p>Want to collaborate, ask a question, or say hi? Let’s connect.</p>
+      <a href="mailto:support@wisdose.com" class="btn">Email Me</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 WisDose • <a href="#">Privacy</a> • <a href="#">Terms</a></p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
+
